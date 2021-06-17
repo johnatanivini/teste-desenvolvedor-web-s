@@ -17,3 +17,13 @@ Tecnologias utilizadas:
 
 A modelagem e demais informações do projeto, serão adicionadas conforme for gerando os artefatos.
 https://www.notion.so/Resolu-es-3746fc29639c45259b2883d433889962
+
+
+# Executando o projeto:
+
+FOi gerado uma imagem compilada do projeto inicialmente configurado, já com suas dependencias e configurações com a base de dados mysql e aplicativos.
+
+## Executando o docker-composer
+Ele irá montar os serviços necessários para rodar a aplicação.
+
+`docker compose up -d`
