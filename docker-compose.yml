@@ -1,0 +1,37 @@
+version: '2'
+
+services: 
+    api:
+        container_name: loja-vendas
+        build: 
+            context: ./api
+            dockerfile: ./Dockerfile
+        ports: 
+            - 8006:8006
+        volumes: 
+            - ./api:/app
+        depends_on: 
+            - db
+    db:
+        image: mariadb:latest
+        restart: always
+        volumes:
+            - data_volume:/var/lib/mysql
+        ports: 
+            - 3307:3306
+        environment: 
+            MARIADB_ROOT_PASSWORD: 123456
+            MARIADB_DATABASE: loja
+            MARIADB_USER : loja
+            MARIADB_PASSWORD : 123456
+    adminer:
+        image: adminer
+        restart: always
+        ports: 
+            - 8082:8080
+volumes: 
+    data_volume:
+
+
+
+        
