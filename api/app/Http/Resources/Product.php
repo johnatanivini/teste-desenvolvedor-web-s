@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Product extends JsonResource
@@ -20,7 +21,8 @@ class Product extends JsonResource
             'description' => $this->description,
             'unit_price' => $this->unit_price,
             'quantity' => $this->quantity,
-            'barcode' => $this->barcode
+            'barcode' => $this->barcode,
+            'expiration'=> $this->expiration->format('d-m-Y')
         ];
     }
 }
