@@ -40,7 +40,8 @@ Contrução dos servicos:
 - SGDB - Adminer para Mysql
 
 `docker compose up -d`
-## gera chave de configração
+
+## Gera chave de configuração
 
 Após a construção dos serviços:
 
