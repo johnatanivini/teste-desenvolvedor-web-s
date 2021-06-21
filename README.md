@@ -1,4 +1,4 @@
-# teste-desenvolvedor-web-spintec
+# teste-desenvolvedor-web
 Teste desenvolvedor Web 
 
 Os detalhes do teste, que serão avaliados foram salvos no notion.so
