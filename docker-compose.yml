@@ -4,12 +4,12 @@ services:
     api:
         container_name: loja-vendas
         build: 
-            context: ./api
-            dockerfile: ./Dockerfile
+            context: ./project
+            dockerfile: ./Dockerfile   
         ports: 
             - 8006:8006
         volumes: 
-            - ./api:/app
+            - ./project:/app
         depends_on: 
             - db
     db:

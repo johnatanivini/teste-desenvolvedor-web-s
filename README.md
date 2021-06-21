@@ -49,33 +49,38 @@ Contrução dos servicos:
 
 Após a construção dos serviços:
 
-Executar geração da key pra questões de segurança
+    php artisan key:generate
+    php artisan db:wipe 
+    php artisan migrate 
+    php artisan migrate:auth
+    php artisan passport:install 
+    php artisan passport:install --uuids 
+    php artisan vendor:publish --tag=passport-config
+    php artisan vendor:publish --tag=passport-migrations
 
-`docker exec -it loja-vendas php artisan key:generate`
+Executa geração da key pra questões de segurança
 
-Reinicia o servico para reconhecer novamente as variaveis de ambiente
+`php artisan key:generate`
 
-`docker compose restart`
+Executa o drop do banco em desenvolvimento ( Cuidado )
 
-Executar migrações do banco de dados Mysql, e tabelas do Passaport
+`php artisan migrate db:wipe`
 
-`docker exec -it loja-vendas php artisan migrate`
+Executa migrações do banco de dados Mysql, e tabelas do Passaport
+
+`php artisan migrate`
 
 Configurando passaport, gera dois clientes com um token secret
 
-`docker exec -it loja-vendas php artisan passport:install`
-
-Configurar UUID para clients Passaport
-
-`docker exec -it loja-vendas php artisan passport:install --uuids`
+`php artisan passport:install`
 
 Publicar configuração Passaport para as variaveis de ambiente
 
-`docker exec -it loja-vendas php artisan vendor:publish --tag=passport-config`
+`php artisan vendor:publish --tag=passport-config`
 
-Depois adicionar as chaves publicas e privadas no .env
+Depois adicionar as chaves publicas e privadas, localizadas no diretorio storage, no arquivo .env
 
-Depois da configuração do arquivo publicado, você pode carregar as chaves encriptadas como variaveis de ambiente.
+as chaves encriptadas como variaveis de ambiente.
 
 PASSPORT_PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----
 <private key here>
@@ -89,6 +94,25 @@ A documentação do Passaport está localizada no link abaixo:
 
 https://laravel.com/docs/8.x/passport#passport-or-sanctum
 
-Acompanhar logs gerados pelo Laravel
+Acompanhar logs gerados pelo Laravel pelo docker em algum terminal
 
 `docker exec -it loja-vendas tail -f storage/logs/laravel.log`
+
+# Frontend Bootstrap 5
+
+Versão do NodeJs 14.*
+Versão do npm 6.*
+
+`php artisan ui bootstrap`
+
+ Gerar telas de login
+
+ `php artisan ui bootstrap --auth`
+
+ Instalando dependencias e executando server
+
+ `npm install && npm run dev`
+
+ Rodar Laravel MIX
+
+ `npx mix`
