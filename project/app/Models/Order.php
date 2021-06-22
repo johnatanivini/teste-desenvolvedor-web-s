@@ -27,14 +27,10 @@ class Order extends Model
     ];
 
     protected $fillable = [
-        'date', 'descount'
+        'date', 'descount','price'
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-
-        self::created(function(Order $model) {
+    public static function getDiscount(Order $model) {
 
             $totalItens = $model->orders_itens->sum('quantity');
             $valorTotal = $model->orders_itens->sum('unit_price');
@@ -47,9 +43,14 @@ class Order extends Model
                 $price -= $discount;
             }
 
-            $model->save();
+            $model->price = $price;
+            return $model;
+    }
 
-        });
+    public static function boot()
+    {
+        parent::boot();
+
     }
 
     public function people()

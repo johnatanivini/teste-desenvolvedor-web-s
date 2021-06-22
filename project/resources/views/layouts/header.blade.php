@@ -12,20 +12,20 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('clients')}}" role="button" v-pre>
+                            <a class="nav-link" href="{{route('admin.client.index')}}" role="button" v-pre>
                                 {{ __('Clientes') }}
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('products')}}" role="button" v-pre>
+                            <a class="nav-link" href="{{route('admin.product.index')}}" role="button" v-pre>
                                 {{ __('Produtos') }}
                             </a>
                         </li>
 
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('orders')}}" role="button" v-pre>
+                            <a class="nav-link" href="{{route('admin.order.index')}}" role="button" v-pre>
                                 {{ __('Pedidos') }}
                             </a>
                         </li>

@@ -1,10 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.partials')
 
-@section('content')
-<div class="container-fluid">
-    @include('alerts')
-    
-    <div class="row  row-cols-3 text-center ">
+@section('partials')
+<div class="row  row-cols-3 text-center ">
         <div class="col">
             <div class="card">
                 <div class="card-header bg-warning">
@@ -32,5 +29,4 @@
             </div>
         </div>
     </div>
-</div>
-@endsection
+@endsection 
