@@ -40,8 +40,12 @@ Route::middleware('auth:web')
     Route::put('/admin/cliente/{id}','Client@update')->name('admin.client.update');
 
     Route::get('/admin/produto','Product@index')->name('admin.product.index');
+    Route::get('/admin/produto/cadastro','Product@form')->name('admin.product.form');
     Route::get('/admin/produto/{id}','Product@details')->name('admin.product.details');
-    Route::get('/admin/produto/cadastro','Product@create')->name('admin.product.create');
+    Route::get('/admin/produto/editar/{id}','Product@edit')->name('admin.product.edit');
+    Route::post('/admin/produto','Product@store')->name('admin.product.store');
+    Route::delete('/admin/produto/{id}','Product@destroy')->name('admin.product.destroy');
+    Route::put('/admin/produto/{id}','Product@update')->name('admin.product.update');
 
     Route::get('/admin/pedido','Order@index')->name('admin.order.index');
     Route::get('/admin/pedido/{id}','Order@details')->name('admin.order.details');
