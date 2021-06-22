@@ -99,11 +99,13 @@ class People extends BaseController
     public function destroy($id):JsonResponse {
 
         $model = ModelsPeople::find($id);
+        
 
         if (!$model) {
             return $this->sendError('O cliente não pode ser removido',['error' => 'O id não existe']);
         }
 
+        $model->orders()->delete();
         $model->delete();
 
         return $this->sendResponse(new Collection(), 'Cliente removido!');
