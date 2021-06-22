@@ -48,7 +48,9 @@ Route::middleware('auth:web')
     Route::put('/admin/produto/{id}','Product@update')->name('admin.product.update');
 
     Route::get('/admin/pedido','Order@index')->name('admin.order.index');
+    Route::get('/admin/pedido/cadastro','Order@form')->name('admin.order.form');
     Route::get('/admin/pedido/{id}','Order@details')->name('admin.order.details');
-    Route::get('/admin/pedido/cadastro','Order@create')->name('admin.order.create');
+    Route::post('/admin/pedido','Order@store')->name('admin.order.store');
+    Route::delete('/admin/pedido/{id}','Order@destroy')->name('admin.order.destroy');
 
 });
