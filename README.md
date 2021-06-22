@@ -5,6 +5,8 @@ Os detalhes do teste, que serão avaliados foram salvos no notion.so
 
 https://www.notion.so/Teste-Desenvolvedor-Web-fca6b6bf0ae54d339201318c9de0bd12
 
+![image](https://user-images.githubusercontent.com/2191326/122844769-c08a7380-d2d8-11eb-8bc2-b6e21fee9767.png)
+
 Tecnologias utilizadas:
 
 - PHP 8+
