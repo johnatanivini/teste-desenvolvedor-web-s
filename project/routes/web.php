@@ -31,20 +31,20 @@ Route::middleware('auth:web')
 
     Route::view('admin','Dashboard@index')->name('dashboard');
 
-    Route::get('admin/clientes','Client@index')->name('admin.client.index');
-    Route::get('admin/clientes/{id}','Client@details')->name('admin.client.details');
-    Route::post('admin/clientes','Client@store')->name('admin.client.store');
-    Route::get('admin/clientes/form','Client@form')->name('admin.client.form');
-    Route::get('admin/clientes/editar/{id}','Client@edit')->name('admin.client.edit');
-    Route::delete('admin/clientes/{id}','Client@destroy')->name('admin.client.destroy');
-    Route::put('admin/clientes/{id}','Client@update')->name('admin.client.update');
+    Route::get('/admin/cliente','Client@index')->name('admin.client.index');
+    Route::get('/admin/cliente/cadastro','Client@form')->name('admin.client.form');
+    Route::get('/admin/cliente/{id}','Client@details')->name('admin.client.details');
+    Route::get('/admin/cliente/editar/{id}','Client@edit')->name('admin.client.edit');
+    Route::post('/admin/cliente','Client@store')->name('admin.client.store');
+    Route::delete('/admin/cliente/{id}','Client@destroy')->name('admin.client.destroy');
+    Route::put('/admin/cliente/{id}','Client@update')->name('admin.client.update');
 
-    Route::get('admin/produtos','Product@index')->name('admin.product.index');
-    Route::get('admin/produtos/{id}','Product@details')->name('admin.product.details');
-    Route::get('admin/produtos/novo','Product@create')->name('admin.product.create');
+    Route::get('/admin/produto','Product@index')->name('admin.product.index');
+    Route::get('/admin/produto/{id}','Product@details')->name('admin.product.details');
+    Route::get('/admin/produto/cadastro','Product@create')->name('admin.product.create');
 
-    Route::get('admin/pedidos','Order@index')->name('admin.order.index');
-    Route::get('admin/pedidos/{id}','Order@details')->name('admin.order.details');
-    Route::get('admin/pedidos/novo','Order@create')->name('admin.order.create');
+    Route::get('/admin/pedido','Order@index')->name('admin.order.index');
+    Route::get('/admin/pedido/{id}','Order@details')->name('admin.order.details');
+    Route::get('/admin/pedido/cadastro','Order@create')->name('admin.order.create');
 
 });

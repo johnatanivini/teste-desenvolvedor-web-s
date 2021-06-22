@@ -25,7 +25,7 @@
                             <td>{{$people->cpf}}</td>
                         </tr>
                     </table>
-
+                    @if($people->orders)
                     <table class="table">
                     <tr>
                             <th colspan="3">Pedidos</th>
@@ -81,6 +81,7 @@
                         </tr>
                                     
                     </table>
+                    @endif
 
                 </div>
 

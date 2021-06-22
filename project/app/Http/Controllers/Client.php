@@ -24,13 +24,12 @@ class Client extends Controller
         return view('client.index',['peoples'=> $peoples]);
     }
 
-    public function form(){
-
+    public function form()
+    {
         return view('client.create');
-
     }
 
-    public function update($id, Request $request){
+    public function update($id, Request $request) {
         
         $post = $request->all();
 
@@ -49,11 +48,11 @@ class Client extends Controller
         $model = People::find($id);
         
         if ($validators->fails()) {
-            return redirect('/admin/clientes')->withErrors($validators->errors());
+            return redirect()->route('admin.client.index')->withErrors($validators->errors());
         }
 
         if (!$model) {
-            return redirect('/admin/clientes')->with(['success'=>'Cliente não encontrado!']);
+            return redirect()->route('admin.client.index')->with(['error'=>'Cliente não encontrado!']);
         }
 
         $model->name = $post['name'];
@@ -62,7 +61,7 @@ class Client extends Controller
 
         $model->update();
         
-        return redirect('/admin/clientes')->with(['success'=>'Cliente atualizado!']);
+        return redirect()->route('admin.client.index')->with(['success'=>'Cliente atualizado!']);
 
     }
 
@@ -77,12 +76,12 @@ class Client extends Controller
         ]);
         
         if ($validators->fails()) {
-            redirect('/admin/clientes')->withErrors($validators->errors());
+            return redirect()->route('admin.client.form')->withErrors($validators->errors());
         }
 
-        People::create($post);
+        $save = People::create($post);
         
-        return redirect('/admin/clientes')->with(['success'=>'Cliente criado!']);
+        return redirect()->route('admin.client.index')->with(['success'=>'Cliente criado!']);
     }
 
     public function destroy($id, Request $request) {
@@ -91,13 +90,13 @@ class Client extends Controller
 
         if (!$model) {
 
-            return redirect('/admin/clientes')->with(['success'=>'Cliente não existe!']);
+            return redirect()->route('admin.client.index')->with(['success'=>'Cliente não existe!']);
 
         }
 
         $model->delete();
 
-        return redirect('/admin/clientes')->with(['success'=>'Cliente removido!']);
+        return redirect()->route('admin.client.index')->with(['success'=>'Cliente removido!']);
 
     }
 
@@ -106,7 +105,7 @@ class Client extends Controller
         $people = People::find($id);
 
         if(!$people){
-            return redirect('/admin/clientes')->with(['success'=>'Cliente não existe!']);
+            return redirect()->route('admin.client.index')->with(['success'=>'Cliente não existe!']);
         }
 
         return view('client.details',[
@@ -119,7 +118,7 @@ class Client extends Controller
         $people = People::find($id);
 
         if(!$people){
-            return redirect('/admin/clientes')->with(['success'=>'Cliente não existe!']);
+            return redirect()->route('admin.client.index')->with(['success'=>'Cliente não existe!']);
         }
 
         return view('client.edit',[

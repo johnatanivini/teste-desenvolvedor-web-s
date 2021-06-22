@@ -1,6 +1,7 @@
 @extends('layouts.partials')
 
 @section('partials')
+    @include('layouts.alerts')
     <div class="row">
         <div class="col">
 
@@ -38,7 +39,7 @@
             <div class="card">
                 <div class="card-header">
                     
-                    Lista de clientes - <a href="{{route('admin.client.form')}}" class="btn btn-info">Novo</a>
+                    Lista de clientes - <a href="{{route('admin.client.form')}}" class="btn btn-info">Cadastrar</a>
                 </div>
                 <div class="card-body">
 
@@ -69,7 +70,7 @@
                                         Editar
                                         </a>
 
-                                        <form style="display:inline-block" action="{{route('admin.client.destroy',['id' => $people->id])}}" method="POST">
+                                        <form style="display:inline-block" class="form-destroy" action="{{route('admin.client.destroy',['id' => $people->id])}}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                            <button class="btn btn-sm btn-danger">Remover</button>
@@ -78,6 +79,13 @@
                                     </th>
                                 </tr>
                             @endforeach
+                            @if(!$peoples)
+                            <tr>
+                                <td>
+                                    Nenhum registro encontrado
+                                </td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
                     {{ $peoples->links() }}
