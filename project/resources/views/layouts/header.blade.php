@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ asset('img/pdv.png')}}" alt="{{ config('app.name', 'Laravel') }}" height="50" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -13,7 +13,20 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('clients')}}" role="button" v-pre>
-                                {{ Auth::user()->name }}
+                                {{ __('Clientes') }}
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('products')}}" role="button" v-pre>
+                                {{ __('Produtos') }}
+                            </a>
+                        </li>
+
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('orders')}}" role="button" v-pre>
+                                {{ __('Pedidos') }}
                             </a>
                         </li>
 
