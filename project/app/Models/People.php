@@ -7,10 +7,11 @@ use App\Models\Concerns\UsesUuid;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class People extends Model
 {
-    use HasFactory, EscopeOrder;
+    use HasFactory, EscopeOrder, SoftDeletes;
 
     protected $dates = [
         'created_at',
@@ -19,6 +20,11 @@ class People extends Model
     ];
 
     protected $fillable = ['name','email','cpf'];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 
     public function scopeName(Builder $query, $value)
     {
