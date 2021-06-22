@@ -2,19 +2,32 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row justify-content-center">
+    @include('alerts')
+    
+    <div class="row  row-cols-3 text-center ">
         <div class="col">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
+                <div class="card-header bg-warning">
+                    Clientes
+                </div>
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    <h3>{{$total_clients}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-primary text-light">Produtos</div>
+                <div class="card-body">
+                    <h3>{{$total_products}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-success text-light">Pedidos</div>
+                <div class="card-body">
+                    <h3>{{$total_orders}}</h3>
                 </div>
             </div>
         </div>
