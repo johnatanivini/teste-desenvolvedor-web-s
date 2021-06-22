@@ -1,4 +1,4 @@
-# teste-desenvolvedor-web-spintec
+# teste-desenvolvedor-web
 Teste desenvolvedor Web 
 
 Os detalhes do teste, que serão avaliados foram salvos no notion.so
@@ -53,18 +53,13 @@ Após a construção dos serviços:
     php artisan db:wipe 
     php artisan migrate 
     php artisan migrate:auth
-    php artisan passport:install 
-    php artisan passport:install --uuids 
+    php artisan passport:install
     php artisan vendor:publish --tag=passport-config
     php artisan vendor:publish --tag=passport-migrations
 
 Executa geração da key pra questões de segurança
 
 `php artisan key:generate`
-
-Executa o drop do banco em desenvolvimento ( Cuidado )
-
-`php artisan migrate db:wipe`
 
 Executa migrações do banco de dados Mysql, e tabelas do Passaport
 
@@ -77,6 +72,7 @@ Configurando passaport, gera dois clientes com um token secret
 Publicar configuração Passaport para as variaveis de ambiente
 
 `php artisan vendor:publish --tag=passport-config`
+
 
 Depois adicionar as chaves publicas e privadas, localizadas no diretorio storage, no arquivo .env
 
