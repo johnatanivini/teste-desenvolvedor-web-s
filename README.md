@@ -15,6 +15,10 @@ https://www.notion.so/Teste-Desenvolvedor-Web-fca6b6bf0ae54d339201318c9de0bd12
 
 ![image](https://user-images.githubusercontent.com/2191326/123037127-81d1e780-d3c4-11eb-9b21-7c5695e0dc15.png)
 
+## Detalhe do Pedido
+![image](https://user-images.githubusercontent.com/2191326/123038349-9616e400-d3c6-11eb-8461-4e1284daa6ba.png)
+
+
 
 
 Tecnologias utilizadas:
