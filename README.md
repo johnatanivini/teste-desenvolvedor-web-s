@@ -1,12 +1,25 @@
-# teste-desenvolvedor-web
-Teste desenvolvedor Web 
+# Aplicação
 
-Os detalhes do teste, que serão avaliados foram salvos no notion.so
+Os detalhes do desafio estão no notion.so
 
 https://www.notion.so/Teste-Desenvolvedor-Web-fca6b6bf0ae54d339201318c9de0bd12
 
 # Screenshot
 ![image](https://user-images.githubusercontent.com/2191326/122844769-c08a7380-d2d8-11eb-8bc2-b6e21fee9767.png)
+
+## Clientes
+
+![image](https://user-images.githubusercontent.com/2191326/123036943-3c151f00-d3c4-11eb-8c9a-7a4f72dd3281.png)
+
+# Cadastro de Pedido
+
+![image](https://user-images.githubusercontent.com/2191326/123037127-81d1e780-d3c4-11eb-9b21-7c5695e0dc15.png)
+
+## Detalhe do Pedido
+![image](https://user-images.githubusercontent.com/2191326/123038349-9616e400-d3c6-11eb-8461-4e1284daa6ba.png)
+
+
+
 
 Tecnologias utilizadas:
 
@@ -55,7 +68,6 @@ Após a construção dos serviços:
     php artisan key:generate
     php artisan db:wipe 
     php artisan migrate 
-    php artisan migrate:auth
     php artisan passport:install
     php artisan vendor:publish --tag=passport-config
     php artisan vendor:publish --tag=passport-migrations
@@ -68,6 +80,9 @@ Executa migrações do banco de dados Mysql, e tabelas do Passaport
 
 `php artisan migrate`
 
+![image](https://user-images.githubusercontent.com/2191326/123038876-8f3ca100-d3c7-11eb-83eb-5ce4d8e72928.png)
+
+
 Configurando passaport, gera dois clientes com um token secret
 
 `php artisan passport:install`
@@ -75,7 +90,6 @@ Configurando passaport, gera dois clientes com um token secret
 Publicar configuração Passaport para as variaveis de ambiente
 
 `php artisan vendor:publish --tag=passport-config`
-
 
 Depois adicionar as chaves publicas e privadas, localizadas no diretorio storage, no arquivo .env
 
@@ -93,9 +107,24 @@ A documentação do Passaport está localizada no link abaixo:
 
 https://laravel.com/docs/8.x/passport#passport-or-sanctum
 
+
 Acompanhar logs gerados pelo Laravel pelo docker em algum terminal
 
 `docker exec -it loja-vendas tail -f storage/logs/laravel.log`
+    
+#Seeders
+Após toda migração execute o seeder para adicionar algumas informações no banco
+
+Cria o primeiro usuário e preenche demais tabelas com dados
+    
+`php artisan db:seed`
+
+![image](https://user-images.githubusercontent.com/2191326/123040568-5d790980-d3ca-11eb-85b1-c06faf675c0c.png)
+
+## O seeder gera um user:
+
+user default: admin@teste.com.br 
+senha `password`
 
 # Frontend Bootstrap 5
 
@@ -115,3 +144,8 @@ Versão do npm 6.*
  Rodar Laravel MIX
 
  `npx mix`
+
+ Caso precise ficar trabalhando com js e compilando automaticamente use o comando
+
+`npm run watch`
+
