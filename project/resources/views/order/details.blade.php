@@ -21,6 +21,7 @@
                             <th>Cliente</th>
                             <th>Situação</th>
                             <th>Valor</th>
+                            <th>Com desconto</th>
                         </tr>
                         <tr>
                             
@@ -30,6 +31,7 @@
                             <td>{{$order->people?->name}}</td>
                             <td>{{$order->status?->name}}</td>
                             <td>@money($order->getDiscount($order)->price)</td>
+                            <td>@money($order->getDiscount($order)->price_discount)</td>
                         </tr>
                     </table>
 

@@ -2,18 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\OrderItens;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class OrderItensFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = OrderItens::class;
 
     /**
      * Define the model's default state.
@@ -23,11 +24,10 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-           'name' => 'john Don',
-           'email' => 'admin@teste.com',
-           'email_verified_at'=> now(),
-           'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-           'remember_token' => Str::random(10)
+           'product_id' => 1,
+           'order_id' => 1,
+           'quantity' => $this->faker->numberBetween(1,5),
+            'unit_price' => $this->faker->randomNumber(3)
         ];
     }
 }

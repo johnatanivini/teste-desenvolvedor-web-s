@@ -20,6 +20,7 @@ class Order extends Model
     use HasFactory, EscopeOrder, SoftDeletes;
 
     public $price;
+    public $price_discount;
 
     protected  $dates = [
         'date',
@@ -37,15 +38,19 @@ class Order extends Model
             $totalItens = $model->orders_itens->sum('quantity');
             $valorTotal = $model->orders_itens->sum('unit_price');
 
-            $discount = $model->discount;
-
+            $discount = (float) $model->discount;
+            
             $price = $totalItens * $valorTotal;
 
-            if($discount > 0 && $discount < $valorTotal) {
-                $price -= $discount;
+            if($discount > $price) {
+                $discount = 0;
             }
 
+            $valorDesconto = $price - $discount;
+
+            $model->price_discount = $valorDesconto;
             $model->price = $price;
+            
             return $model;
     }
 
