@@ -26,18 +26,6 @@ class OrderFactory extends Factory
             "people_id"=>1,
             "status_id"=> $this->faker->numberBetween(1,3),
             "discount"=> $this->faker->numberBetween(0, 10),
-            "order_itens"=> [
-                [
-                    "product_id"=> 1,
-                    "quantity"=> $this->faker->numberBetween(0, 10),
-                    "unit_price"=>$this->faker->numberBetween(0, 5)
-                ],
-                [
-                    "product_id"=> 2,
-                    "quantity"=> $this->faker->numberBetween(0, 10),
-                    "unit_price"=>$this->faker->numberBetween(0, 5)
-                ]
-            ]
         ];
     }
 }

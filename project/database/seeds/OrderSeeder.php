@@ -14,7 +14,7 @@ class OrderSeeder extends Seeder
     public function run()
     {
        $user =  Order::factory()
-                ->count(5)
+                ->count(1)
                 ->create();
 
         echo "Usuário {$user->first()->name}, com email [ {$user->first()->email}], senha criada `password`";

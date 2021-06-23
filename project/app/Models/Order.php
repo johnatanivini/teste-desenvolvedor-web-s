@@ -9,15 +9,18 @@ use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
-    use HasFactory, EscopeOrder;
+    use HasFactory, EscopeOrder, SoftDeletes;
 
     public $price;
+    public $price_discount;
 
     protected  $dates = [
         'date',
@@ -35,15 +38,19 @@ class Order extends Model
             $totalItens = $model->orders_itens->sum('quantity');
             $valorTotal = $model->orders_itens->sum('unit_price');
 
-            $discount = $model->discount;
-
+            $discount = (float) $model->discount;
+            
             $price = $totalItens * $valorTotal;
 
-            if($discount > 0 && $discount < $valorTotal) {
-                $price -= $discount;
+            if($discount > $price) {
+                $discount = 0;
             }
 
+            $valorDesconto = $price - $discount;
+
+            $model->price_discount = $valorDesconto;
             $model->price = $price;
+            
             return $model;
     }
 
@@ -55,7 +62,7 @@ class Order extends Model
 
     public function people()
     {
-        return $this->belongsTo(People::class);
+        return $this->belongsTo(People::class)->withTrashed();
     }
 
     public function status()
@@ -78,15 +85,15 @@ class Order extends Model
         $model = new ModelsOrder();
     
         $model->discount = $post['discount'];
-        $model->date = $post['date'];
+        $model->date = $post['date'] ?? Date::now()->format('Y-m-d');
         $model->people()->associate(People::find($post['people_id']));
-        $model->status()->associate(Status::find($post['status_id']));
+        $model->status()->associate(Status::find($post['status_id'] ?? Status::EM_ANDAMENTO));
         $model->save();
 
         $modelsOrderItensSave = [];
        
 
-        foreach($post['order_itens'] as $order_itens) {
+        foreach($post['orders_itens'] as $order_itens) {
 
             $modelOrderItens = new OrderItens();
             $modelOrderItens->quantity = $order_itens['quantity'];
@@ -100,6 +107,8 @@ class Order extends Model
 
         $model->orders_itens()->createMany($modelsOrderItensSave);
 
+        $model->price = self::getDiscount($model)->price;
+
         DB::commit();
 
         return $model;
@@ -112,9 +121,18 @@ class Order extends Model
 
     }
 
+    public function scopeFilterByCpf(Builder $query, $value)
+    {   
+        if ($value) {
+            return  $query->whereHas('people', function($people) use($value){
+                $people->where('cpf', $value);
+            });
+        }
+    }
+
     public function scopeFilterId(Builder $query, $value)
     {
-        if($value) {
+        if ($value) {
             return $query->where('id', $value);
         }
 
@@ -122,7 +140,7 @@ class Order extends Model
 
     public function scopePeople(Builder $query, $value)
     {
-        if($value) {
+        if ($value) {
             return $query->where('people_id', $value);
         }
 
@@ -130,15 +148,17 @@ class Order extends Model
 
     public function scopeStatus(Builder $query, $value)
     {
-        if($value) {
-            return $query->where('status_id', $value);
+        if ($value) {
+            return $query->whereHas('status', function($query) use($value){
+                $query->where('code', $value);
+            });
         }
 
     }
 
     public function scopeDiscount(Builder $query, $value)
     {
-        if($value) {
+        if ($value) {
             return $query->where('discount', $value);
         }
 
@@ -146,7 +166,7 @@ class Order extends Model
 
     public function scopeDate(Builder $query, $value)
     {
-        if($value) {
+        if ($value) {
             return $query->where('date', $value);
         }
 

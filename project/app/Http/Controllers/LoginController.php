@@ -31,7 +31,7 @@ class LoginController extends Controller
             
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return redirect()->intended('home');
         }
   
         return back()->withErrors([

@@ -38,6 +38,7 @@ Route::middleware('auth:web')
     Route::post('/admin/cliente','Client@store')->name('admin.client.store');
     Route::delete('/admin/cliente/{id}','Client@destroy')->name('admin.client.destroy');
     Route::put('/admin/cliente/{id}','Client@update')->name('admin.client.update');
+    Route::get('/admin/cliente/cpf/{cpf?}','Client@getByCpf')->name('admin.client.cpf');
 
     Route::get('/admin/produto','Product@index')->name('admin.product.index');
     Route::get('/admin/produto/cadastro','Product@form')->name('admin.product.form');
@@ -46,9 +47,13 @@ Route::middleware('auth:web')
     Route::post('/admin/produto','Product@store')->name('admin.product.store');
     Route::delete('/admin/produto/{id}','Product@destroy')->name('admin.product.destroy');
     Route::put('/admin/produto/{id}','Product@update')->name('admin.product.update');
+    Route::get('/admin/produto/barcode/{barcode?}','Product@getByBarcode')->name('admin.product.barcode');
 
     Route::get('/admin/pedido','Order@index')->name('admin.order.index');
+    Route::get('/admin/pedido/cadastro','Order@form')->name('admin.order.form');
     Route::get('/admin/pedido/{id}','Order@details')->name('admin.order.details');
-    Route::get('/admin/pedido/cadastro','Order@create')->name('admin.order.create');
+    Route::post('/admin/pedido','Order@store')->name('admin.order.store');
+    Route::get('/admin/pedido/editar/{id}','Order@edit')->name('admin.order.edit');
+    Route::delete('/admin/pedido/{id}','Order@destroy')->name('admin.order.destroy');
 
 });
