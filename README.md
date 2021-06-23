@@ -8,6 +8,16 @@ https://www.notion.so/Teste-Desenvolvedor-Web-fca6b6bf0ae54d339201318c9de0bd12
 # Screenshot
 ![image](https://user-images.githubusercontent.com/2191326/122844769-c08a7380-d2d8-11eb-8bc2-b6e21fee9767.png)
 
+## Clientes
+
+![image](https://user-images.githubusercontent.com/2191326/123036943-3c151f00-d3c4-11eb-8c9a-7a4f72dd3281.png)
+
+# Cadastro de Pedido
+
+![image](https://user-images.githubusercontent.com/2191326/123037127-81d1e780-d3c4-11eb-9b21-7c5695e0dc15.png)
+
+
+
 Tecnologias utilizadas:
 
 - PHP 8+
