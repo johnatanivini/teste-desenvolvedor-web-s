@@ -113,9 +113,15 @@ Acompanhar logs gerados pelo Laravel pelo docker em algum terminal
 `docker exec -it loja-vendas tail -f storage/logs/laravel.log`
     
 #Seeders
+Após toda migração execute o seeder para adicionar algumas informações no banco
 
 Cria o primeiro usuário e preenche demais tabelas com dados
+    
 `php artisan db:seed`
+
+![image](https://user-images.githubusercontent.com/2191326/123040568-5d790980-d3ca-11eb-85b1-c06faf675c0c.png)
+
+## O seeder gera um user:
 
 user default: admin@teste.com.br 
 senha `password`
