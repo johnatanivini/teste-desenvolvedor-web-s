@@ -81,6 +81,9 @@ Executa migrações do banco de dados Mysql, e tabelas do Passaport
 
 `php artisan migrate`
 
+![image](https://user-images.githubusercontent.com/2191326/123038876-8f3ca100-d3c7-11eb-83eb-5ce4d8e72928.png)
+
+
 Configurando passaport, gera dois clientes com um token secret
 
 `php artisan passport:install`
@@ -88,7 +91,6 @@ Configurando passaport, gera dois clientes com um token secret
 Publicar configuração Passaport para as variaveis de ambiente
 
 `php artisan vendor:publish --tag=passport-config`
-
 
 Depois adicionar as chaves publicas e privadas, localizadas no diretorio storage, no arquivo .env
 
@@ -106,9 +108,18 @@ A documentação do Passaport está localizada no link abaixo:
 
 https://laravel.com/docs/8.x/passport#passport-or-sanctum
 
+
 Acompanhar logs gerados pelo Laravel pelo docker em algum terminal
 
 `docker exec -it loja-vendas tail -f storage/logs/laravel.log`
+    
+#Seeders
+
+Cria o primeiro usuário e preenche demais tabelas com dados
+`php artisan db:seed`
+
+user default: admin@teste.com.br 
+senha `password`
 
 # Frontend Bootstrap 5
 
@@ -128,3 +139,8 @@ Versão do npm 6.*
  Rodar Laravel MIX
 
  `npx mix`
+
+ Caso precise ficar trabalhando com js e compilando automaticamente use o comando
+
+`npm run watch`
+
