@@ -1,7 +1,6 @@
-# teste-desenvolvedor-web
-Teste desenvolvedor Web 
+# Aplicação
 
-Os detalhes do teste, que serão avaliados foram salvos no notion.so
+Os detalhes do desafio estão no notion.so
 
 https://www.notion.so/Teste-Desenvolvedor-Web-fca6b6bf0ae54d339201318c9de0bd12
 
