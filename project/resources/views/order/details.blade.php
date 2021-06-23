@@ -24,18 +24,18 @@
                         </tr>
                         <tr>
                             
-                            <td>{{$$order->id}}</td>
+                            <td>{{$order->id}}</td>
                             <td>{{$order->date->format('d-m-Y')}}</td>
                             <td>{{$order->discount}}</td>
-                            <td>{{$order->people->name}}</td>
-                            <td>{{$order->status->name}}</td>
+                            <td>{{$order->people?->name}}</td>
+                            <td>{{$order->status?->name}}</td>
                             <td>@money($order->getDiscount($order)->price)</td>
                         </tr>
                     </table>
 
                     <table class="table">
                         <tr>
-                            <th colspan="3">Itens</th>
+                            <th colspan="4">Itens</th>
                         </tr>
                         <tr>
                             <th>Item</th>
@@ -43,11 +43,11 @@
                             <th>Quantidade</th>
                             <th>Preço</th>
                         </tr>
-                        @foreach($orders->orders_itens as $item)
+                        @foreach($order->orders_itens as $item)
                         <tr>
                             
                             <td>{{$item->id}}</td>
-                            <td>{{$item->product->name}}</td>
+                            <td>{{$item->product?->name}}</td>
                             <td>{{$item->quantity}}</td>
                             <td>{{$item->unit_price}}</td>
                             

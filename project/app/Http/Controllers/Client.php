@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\People;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
@@ -124,5 +125,16 @@ class Client extends Controller
         return view('client.edit',[
             'people' => $people
         ]);
+    }
+
+    public function getByCpf($cpf): JsonResponse
+    {
+        $people = People::withTrashed()->cpf($cpf)->first();
+
+        if(!$people){
+            return response()->json([], 400);
+        }
+
+        return response()->json($people);
     }
 }

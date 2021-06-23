@@ -20,7 +20,7 @@ class Order extends BaseController
     {
         $model = ModelsOrder::date(request('date'))
         ->people(request('people_id'))
-        ->status(request('status_id'))
+        ->status(request('status'))
         ->discount(request('discount'))
         ->filterId(request('id'))
         ->order(request('order'),request('order_type'))

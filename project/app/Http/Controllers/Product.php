@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product as ModelsProduct;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -97,7 +98,13 @@ class Product extends Controller
 
         $model->delete();
 
-        return redirect()->route('admin.product.index')->with(['success'=>'Produto removido!']);
+        $response = [
+            'success' => true,
+            'data' => [],
+            'message' => 'Produto removido!'
+        ];
+
+        return response()->json($response,200);
 
     }
 
@@ -127,5 +134,11 @@ class Product extends Controller
         ]);
     }
 
+    public function getByBarcode($barcode): JsonResponse
+    {
+        $product = ModelsProduct::barcode($barcode)->firstOrFail();
+
+        return response()->json($product);
+    }
 
 }
