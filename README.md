@@ -68,7 +68,6 @@ Após a construção dos serviços:
     php artisan key:generate
     php artisan db:wipe 
     php artisan migrate 
-    php artisan migrate:auth
     php artisan passport:install
     php artisan vendor:publish --tag=passport-config
     php artisan vendor:publish --tag=passport-migrations
